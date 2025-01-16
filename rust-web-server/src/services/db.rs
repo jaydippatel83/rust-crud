@@ -21,7 +21,7 @@ impl Database {
     pub async fn init()-> Self{
         let uri = match std::env::var("MONGODB_URI"){
             Ok(v) => v.to_string(),
-            Err(_) => "mongodb+srv://jaydippatel83:Dev%40block2025@pythoncourse.n9icz.mongodb.net/?retryWrites=true&w=majority".to_string(),
+            Err(_) => panic!("MONGODB_URI not found in environment variables"),
         };
 
         let client = Client::with_uri_str(&uri).await.unwrap();
